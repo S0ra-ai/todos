@@ -1,0 +1,28 @@
+<style scoped>
+.hdContainer {
+  text-align: center;
+  font-size: 16px;
+}
+
+.hdTitle {
+  color: #4e6ef2;
+}
+
+.newTodo {
+  width: 100%;
+  padding: 20px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.newTodo:focus {
+  outline-color: #4e6ef2;
+}
+
+.hdMsg {
+  color: red;
+  margin: 10px 0;
+}
+</style>
