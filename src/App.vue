@@ -1,4 +1,15 @@
 <template>
+  <!-- Video Background -->
+  <video 
+    autoplay 
+    muted 
+    loop 
+    playsinline 
+    class="background-video"
+  >
+    <source src="/background-video.mp4" type="video/mp4">
+  </video>
+  
   <div class="container">
     <div v-if="loading" class="loading">
       正在加载数据...
@@ -11,6 +22,7 @@
         @toggle="toggleTodo" 
         @delete="deleteTodo" 
         @pin="togglePin"
+        @update-priority="updatePriority"
       />
       <TodoFooter 
         v-if="todos.length > 0" 
@@ -151,6 +163,13 @@ export default {
       }
     },
     
+    updatePriority(id, newPriority) {
+      const todo = this.todos.find(t => t.id === id);
+      if (todo) {
+        todo.priority = newPriority;
+      }
+    },
+    
     setFilter(filter) {
       this.currentFilter = filter;
     }
@@ -169,7 +188,9 @@ export default {
 <style>
 html,
 body {
-  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 #app {
@@ -179,11 +200,31 @@ body {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Video Background */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.8;
 }
 
 .container {
-  max-width: 980px;
-  min-height: 100%;
-  margin: 0 auto;
-}
+    max-width: 980px;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 </style>

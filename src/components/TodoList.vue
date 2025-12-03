@@ -28,6 +28,15 @@
         </span>
       </div>
       <div class="tdItem-acts">
+        <select 
+          class="priority-selector" 
+          :value="todo.priority" 
+          @change.stop="updatePriority(todo.id, $event.target.value)"
+        >
+          <option value="low">低</option>
+          <option value="medium">中</option>
+          <option value="high">高</option>
+        </select>
         <span @click.stop="deleteTodo(todo.id)"
           class="delete-btn"
         >
@@ -94,6 +103,9 @@ export default {
     },
     togglePin(id) {
       this.$emit('pin', id)
+    },
+    updatePriority(id, newPriority) {
+      this.$emit('update-priority', id, newPriority)
     },
     formatDate(date) {
       // 格式化日期为易读的形式
@@ -196,6 +208,15 @@ export default {
 
 .tdItem:hover .tdItem-acts {
     display: block;
+}
+
+.priority-selector {
+    margin-right: 10px;
+    padding: 4px 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
 }
 
 .delete-btn {

@@ -52,7 +52,7 @@ export default {
 
 <style scoped>
 .tdFooter {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 10px 20px;
     margin: 20px 0;
     display: flex;
